@@ -3,7 +3,7 @@
  */
 
 const request = require('request-promise')
-const getVerificationInputs = require('./getVerificationInputs').func
+const getVerificationInputs = require('./lib/getVerificationInputs.js');
 
 module.exports = {
 	/**
@@ -20,7 +20,7 @@ module.exports = {
 					cookie: `.ROBLOSECURITY=${cookie}`
 				}
 			}).then(res => {
-				const inputs = getVerificationInputs({ html: res.body })
+				const inputs = getVerificationInputs.func({ html: res.body })
 				var match
 
 				if (res.headers && res.headers['set-cookie']) {
